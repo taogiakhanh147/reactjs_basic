@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './ThemeContext';
+import {StoreProvider, StoreContext} from './store';
 
 // Fake comments
 function emitComment(id) {
@@ -22,11 +23,15 @@ emitComment(3)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <ThemeProvider>
+
+     //<ThemeProvider>
+      //<App />
+    //</ThemeProvider>
+
+    <StoreProvider>
       <App />
-    </ThemeProvider>
-  </React.StrictMode>
+    </StoreProvider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

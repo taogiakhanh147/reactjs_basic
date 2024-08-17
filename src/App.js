@@ -5,6 +5,8 @@ import TodoApp from './Todo'
 import "./App.css"
 import { useContext } from 'react'
 import { ThemeContext } from './ThemeContext'
+import Paragraph from './Paragraph'
+import {useStore, actions} from './store'
 
 // Bai tap 1: (UseState)
 // const orders = [100, 200, 300]
@@ -445,17 +447,43 @@ import { ThemeContext } from './ThemeContext'
 // 1. Create context
 // 2. Provider
 // 3. Consumer
+// function App() {
+//     const context = useContext(ThemeContext)
+//     return (
+//         <div>
+//             <button onClick={context.toggleTheme}>Toggle</button>
+//             <Content />
+//         </div>
+
+
+//     )
+// }
+
+// Bai tap 16: Global State with Context + useReducer | Trạng thái toàn cục (clip 48) 
 function App() {
-    const context = useContext(ThemeContext)
+    const [state, dispatch] = useStore() // useStore() là hàm chứa useContext(Context)
+    const {todos, todoInput} = state
+    
+    const handleAdd = () => {
+        dispatch(actions.add_todo_input(todoInput))
+    }
+    
+
     return (
-        <div>
-            <button onClick={context.toggleTheme}>Toggle</button>
-            <Content />
+        <div>   
+            <input
+                value={todoInput}
+                placeholder='Enter...'
+                onChange={e => {
+                    dispatch(actions.setTodoInput(e.target.value))
+                }}
+            />
+            <button onClick={handleAdd}>Add</button>
+            {todos.map((todo, index) => (
+                <li key={index}>{todo}</li>
+            ))}
         </div>
-
-
     )
 }
 
-
-export default App;
+export default App
