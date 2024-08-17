@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useState, memo } from "react"
+import Paragraph from "./Paragraph"
 
 // 1. useEffect(callback)
 // - Gọi callback mỗi khi component re-render
@@ -274,7 +275,7 @@ import { useEffect, useLayoutEffect, useState, memo } from "react"
 // Bai tap 9: Memo (clip 41)
 // function Content({count}) {
 //     console.log('re-render');
-    
+
 //     return (
 //         <div>
 //             <h1>hello anh em {count}</h1>
@@ -283,15 +284,25 @@ import { useEffect, useLayoutEffect, useState, memo } from "react"
 // }
 
 // Bai tap 10: useCallback (clip 42)
-function Content({onIncrease}) {
-    console.log('re-render');
-    
+// function Content({onIncrease}) {
+//     console.log('re-render');
+
+//     return (
+//         <div>
+//             <h1>hello anh em</h1>
+//             <button onClick={onIncrease}>Click me</button>
+//         </div>
+//     )
+// }
+
+// bai tap : useContext()
+function Content() {
     return (
         <div>
-            <h1>hello anh em</h1>
-            <button onClick={onIncrease}>Click me</button>
+            <Paragraph/>
         </div>
     )
 }
 
-export default memo(Content)
+
+export default Content
