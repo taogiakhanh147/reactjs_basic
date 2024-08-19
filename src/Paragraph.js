@@ -6,7 +6,7 @@ function Paragraph() {
 
     return (
         <div className={context.theme}>
-            <p>Trinh Nguyen Dieu Anh de thuong</p>
+            <p>Tao Gia Khanh</p>
         </div>
     )
 }

@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './ThemeContext';
-import {StoreProvider, StoreContext} from './store';
+import { StoreProvider, StoreContext } from './store';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // Fake comments
 function emitComment(id) {
@@ -24,13 +25,21 @@ emitComment(3)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-     //<ThemeProvider>
-      //<App />
-    //</ThemeProvider>
+  //<ThemeProvider>
+  //<App />
+  //</ThemeProvider>
 
-    <StoreProvider>
+  // <React.StrictMode>
+  //   <StoreProvider>
+  //     <App />
+  //   </StoreProvider>
+  // </React.StrictMode>
+
+  <React.StrictMode>
+    <Router>
       <App />
-    </StoreProvider>
+    </Router>
+  </React.StrictMode>
 
 );
 

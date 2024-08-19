@@ -6,7 +6,17 @@ import "./App.css"
 import { useContext } from 'react'
 import { ThemeContext } from './ThemeContext'
 import Paragraph from './Paragraph'
-import {useStore, actions} from './store'
+import { useStore, actions } from './store'
+import Video from './Video'
+import GlobalStyles from './GlobalStyles'
+import Heading from './Heading'
+import Paragraphh from './Paragraphh'
+import Button from './components/Button'
+import {Routes, Route, Link} from 'react-router-dom'
+import HomePage from './pages/Home'
+import NewsPage from './pages/News'
+import ContactPage from './pages/Contact'
+
 
 // Bai tap 1: (UseState)
 // const orders = [100, 200, 300]
@@ -460,28 +470,103 @@ import {useStore, actions} from './store'
 // }
 
 // Bai tap 16: Global State with Context + useReducer | Trạng thái toàn cục (clip 48) 
+// function App() {
+//     const [state, dispatch] = useStore() // useStore() là hàm chứa useContext(Context)
+//     const {todos, todoInput} = state
+
+//     const handleAdd = () => {
+//         dispatch(actions.add_todo_input(todoInput))
+//     }
+
+
+//     return (
+//         <div>   
+//             <input
+//                 value={todoInput}
+//                 placeholder='Enter...'
+//                 onChange={e => {
+//                     dispatch(actions.setTodoInput(e.target.value))
+//                 }}
+//             />
+//             <button onClick={handleAdd}>Add</button>
+//             {todos.map((todo, index) => (
+//                 <li key={index}>{todo}</li>
+//             ))}
+//         </div>
+//     )
+// }
+
+
+// Bai tap 17: useImperativeHandle() lien quan den tinh dong goi (clip 49)
+// 
+// function App() {
+//     const videoRef = useRef()
+
+//     const handlePlay = () => {
+//         videoRef.current.play()
+//     }
+
+//     const handlePause = () => {
+//         videoRef.current.pause()
+//     }
+
+//     return (
+//         <div>
+//             <Video ref={videoRef}/>
+//             <button onClick={handlePlay}>Play</button>
+//             <button onClick={handlePause}>Pause</button>
+//         </div>
+//     )
+// }
+
+// Bai tap 18: CSS module (clip 51)
+// function App() {
+//     return (
+//         <GlobalStyles>
+//             <Heading/>
+//             <Paragraphh/>
+//         </GlobalStyles>
+//     )
+// }
+
+// Bai tap 19: Thư viện clsx và classnames (clip 52)
+// function App() {
+//     return (
+//         <GlobalStyles>
+//             <div>
+//                 <Button />
+//                 <Button primary/>
+//                 <Button primary disabled/>
+//             </div>
+//         </GlobalStyles>
+//     )
+// }
+
+
+// Bai tap 20: Thư viện clsx và classnames (clip 52)
 function App() {
-    const [state, dispatch] = useStore() // useStore() là hàm chứa useContext(Context)
-    const {todos, todoInput} = state
-    
-    const handleAdd = () => {
-        dispatch(actions.add_todo_input(todoInput))
-    }
-    
 
     return (
-        <div>   
-            <input
-                value={todoInput}
-                placeholder='Enter...'
-                onChange={e => {
-                    dispatch(actions.setTodoInput(e.target.value))
-                }}
-            />
-            <button onClick={handleAdd}>Add</button>
-            {todos.map((todo, index) => (
-                <li key={index}>{todo}</li>
-            ))}
+        <div>
+            <nav>
+                <ul>
+                    <li>
+                        <Link to='/'>Home</Link>
+                    </li>
+                    <li>
+                        <Link to='/news'>News</Link>
+                    </li>
+                    <li>
+                        <Link to='/contact'>Contact</Link>
+                    </li>
+                </ul>
+            </nav>
+
+            <Routes>
+                <Route path="/" element={<HomePage/>}/>
+                <Route path="/news" element={<NewsPage/>}/>
+                <Route path="/contact" element={<ContactPage/>}/>
+            </Routes>
         </div>
     )
 }
